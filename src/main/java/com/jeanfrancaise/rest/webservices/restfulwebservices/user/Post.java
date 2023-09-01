@@ -1,14 +1,19 @@
 package com.jeanfrancaise.rest.webservices.restfulwebservices.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 
 
 @Entity
+@JsonPropertyOrder({ "id", "description" })
 public class Post {
     @Id
     @GeneratedValue
     private Integer Id;
+
+    @Size(min = 10)
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
